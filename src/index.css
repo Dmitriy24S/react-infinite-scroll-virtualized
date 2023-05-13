@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  /* padding: 2rem; */
+  width: 100%;
+  /* text-align: center; */
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  /* place-items: center; */
+  min-width: 320px;
+  min-height: 100vh;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  /* background-color: #1a1a1a; */
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.container {
+  border: 1px solid rgb(199, 199, 199);
+  border-radius: 5px;
+  /* display: flex; */
+  flex-direction: column;
+  /* align-items: center; */
+  align-items: start;
+  justify-content: center;
+
+  display: grid;
+  /* // repeat(auto-fit(minmax(300px, 1fr) */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin: 1rem;
+  /* ! why margin nado fkem mes ie overlfow wtf hz hwy messh fae mari ahgeklam */
+  color: white;
+}
+
+.card {
+  display: flex;
+  gap: 10px;
+  /* align-items: center; */
+  /* flex-direction: row-reverse; */
+  align-items: flex-start;
+  width: fit-content;
+  /* ! ehe k4oe netoh u m eske zm hz ndao wdiht fitone blq i4mkzldie overlof fix omaint same izoes nu hz  */
+  text-align: left;
+  /* width: 28ch; */
+  /* elispsis na p s width parent fk blegh work no too short hfzflkem  */
+}
+
+.card p {
+  margin: 0;
+  /* text-overflow: ellipsis; */
+  /* overflow: hidden; */
+  /* max-height: 7rem; */
+  /* max-width: 30ch; */
+  /* white-space: nowrap; */
+}
+
+img {
+  display: block;
+  /* width: 100%; */
+  /* max-width: 100px; */
+  min-width: 100px;
+  min-height: 100px;
+  max-width: 100px;
+  /* min-width: 50px; */
+  /* min-height: 50px; */
+  background-color: rgb(196, 196, 196);
+  border-radius: 5px;
+}
+
+.fetchInfo {
+  margin: 1rem 0;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* font-size: 1.5rem; */
+}
+
+body {
+  background-color: #000;
+  font-family: 'Nunito', sans-serif;
+  color: whitesmoke;
+}
+
+p {
+  color: whitesmoke;
+  margin: 1em 0 0;
+}
+
+article {
+  margin: 1em;
+  padding: 1em;
+  background-color: rebeccapurple;
+  color: whitesmoke;
+  border-radius: 15px;
+}
+
+h1 {
+  margin: 1rem;
+  color: whitesmoke;
+}
+
+h2::first-letter,
+p::first-letter {
+  text-transform: uppercase;
+}
+
+.center {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+a:any-link {
+  color: whitesmoke;
+}
+
+a:hover,
+a:focus-within {
+  color: hsla(0, 0%, 96%, 0.9);
+}
