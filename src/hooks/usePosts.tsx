@@ -4,11 +4,9 @@ import { getPostsPage } from '../api/axios'
 const usePosts = (pageNum = 1) => {
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
-  // const [error, setError] = useState<unknown>({})
   const [error, setError] = useState<any>({})
-  // const [results, setResults] = useState<unknown[]>([])
   const [results, setResults] = useState<any[]>([])
-  const [hasNextPage, setHasNextPage] = useState(false) // ! ?
+  const [hasNextPage, setHasNextPage] = useState(false) // !
 
   useEffect(() => {
     setIsLoading(true)
@@ -22,8 +20,8 @@ const usePosts = (pageNum = 1) => {
     getPostsPage(pageNum, { signal })
       .then((data) => {
         // setResults(data)
-        setResults((prev) => [...prev, ...data]) // ! Argument of type '(prev: never[]) => any[]' is not assignable to parameter of type 'SetStateAction<never[]>'.
-        setHasNextPage(Boolean(data.length)) // ! ?
+        setResults((prev) => [...prev, ...data])
+        setHasNextPage(Boolean(data.length)) // !
         console.log('hasNextPage Boolean(data.length)', Boolean(data.length))
         setIsLoading(false)
       })

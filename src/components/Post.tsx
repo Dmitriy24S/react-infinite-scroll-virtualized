@@ -1,10 +1,10 @@
-import React, { FC, forwardRef } from 'react'
+import { FC, forwardRef } from 'react'
 
 interface Props {
   post: any
 }
 
-const Post: FC<Props> = forwardRef(({ post }, ref) => {
+const Post: FC<Props> = forwardRef<HTMLElement, Props>(({ post }, ref) => {
   const postBody = (
     <>
       <h2>{post.title}</h2>
@@ -13,9 +13,8 @@ const Post: FC<Props> = forwardRef(({ post }, ref) => {
     </>
   )
 
-  // (parameter) ref: ((instance: unknown) => void) | React.MutableRefObject<unknown>
   const content = ref ? (
-    <article ref={ref}>{postBody}</article> // ! Type '((instance: unknown) => void) | MutableRefObject<unknown>' is not assignable to type 'LegacyRef<HTMLElement> | undefined'.
+    <article ref={ref}>{postBody}</article>
   ) : (
     <article>{postBody}</article>
   )

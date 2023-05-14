@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { Fragment, useEffect } from 'react'
+import { Fragment, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useInfiniteQuery } from 'react-query'
 import Post2 from './Post2'
@@ -66,13 +66,14 @@ const Example3Query2 = () => {
         {data?.pages?.map((page, index) => (
           <Fragment key={index}>
             {page.map((item: any, index: number) => (
+              // ref option1: last Post with ref
               <Post2 id={item.id} title={item.title} thumbnailUrl={item.thumbnailUrl} />
             ))}
           </Fragment>
         ))}
       </div>
 
-      {/* or key here for fetch more like in docs example  */}
+      {/* option2: ref here for fetch more like in docs example  */}
       {data?.pages && (
         <div ref={ref} className='fetchInfo'>
           {isFetchingNextPage

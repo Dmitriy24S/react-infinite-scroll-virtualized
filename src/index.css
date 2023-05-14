@@ -13,7 +13,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 }
 
 #root {
@@ -62,11 +61,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  /* color: #646cff; */
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  /* color: #535bf2; */
 }
 
 body {
@@ -95,11 +94,11 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  /* border-color: #646cff; */
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  /* outline: 4px auto -webkit-focus-ring-color; */
 }
 
 @media (prefers-color-scheme: light) {
@@ -108,7 +107,7 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    /* color: #747bff; */
   }
   button {
     background-color: #f9f9f9;
@@ -118,38 +117,30 @@ button:focus-visible {
 .container {
   border: 1px solid rgb(199, 199, 199);
   border-radius: 5px;
-  /* display: flex; */
-  flex-direction: column;
-  /* align-items: center; */
   align-items: start;
   justify-content: center;
 
   display: grid;
-  /* // repeat(auto-fit(minmax(300px, 1fr) */
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   margin: 1rem;
-  /* ! why margin nado fkem mes ie overlfow wtf hz hwy messh fae mari ahgeklam */
   color: white;
 }
 
 .card {
   display: flex;
   gap: 10px;
-  /* align-items: center; */
-  /* flex-direction: row-reverse; */
   align-items: flex-start;
+  width: -moz-fit-content;
   width: fit-content;
-  /* ! ehe k4oe netoh u m eske zm hz ndao wdiht fitone blq i4mkzldie overlof fix omaint same izoes nu hz  */
   text-align: left;
   /* width: 28ch; */
-  /* elispsis na p s width parent fk blegh work no too short hfzflkem  */
+  /* ellipsis work with parent width */
 }
 
 .card p {
   margin: 0;
   /* text-overflow: ellipsis; */
   /* overflow: hidden; */
-  /* max-height: 7rem; */
   /* max-width: 30ch; */
   /* white-space: nowrap; */
 }
@@ -159,10 +150,8 @@ img {
   /* width: 100%; */
   /* max-width: 100px; */
   min-width: 100px;
-  min-height: 100px;
   max-width: 100px;
-  /* min-width: 50px; */
-  /* min-height: 50px; */
+  min-height: 100px;
   background-color: rgb(196, 196, 196);
   border-radius: 5px;
 }
@@ -181,7 +170,6 @@ img {
 
 html {
   scroll-behavior: smooth;
-  /* font-size: 1.5rem; */
 }
 
 body {

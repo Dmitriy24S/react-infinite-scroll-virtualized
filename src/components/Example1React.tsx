@@ -7,16 +7,14 @@ import Post from './Post'
 const Example1React = () => {
   const [pageNum, setPageNum] = useState(1)
   const { isLoading, isError, error, results, hasNextPage } = usePosts(pageNum)
-  // const lastPostRef = useRef<JSX.IntrinsicElements['article']>(null)
   // const lastPostRef = useRef<any>(null)
-  const intObserver = useRef()
+  const intObserver = useRef<any>()
   const lastPostRef = useCallback(
-    (post) => {
+    (postElement: HTMLElement) => {
       if (isLoading) return
 
-      if (intObserver.current) intObserver.current.disconnect() // ! Property 'disconnect' does not exist on type 'never'.ts(2339)
+      if (intObserver.current) intObserver.current.disconnect()
 
-      // ! Type 'IntersectionObserver' is not assignable to type 'undefined'.
       // intObserver.current = new IntersectionObserver(entries => {
       intObserver.current = new IntersectionObserver((posts) => {
         if (posts[0].isIntersecting && hasNextPage) {
@@ -25,8 +23,7 @@ const Example1React = () => {
         }
       })
 
-      // ! 'intObserver.current' is possibly 'undefined'.ts(18048)
-      if (post) intObserver.current.observe(post)
+      if (postElement) intObserver.current.observe(postElement)
     },
     [isLoading, hasNextPage]
   )
@@ -36,7 +33,6 @@ const Example1React = () => {
       <div>
         <h4>Error</h4>
         <p>{error.message}</p>
-        // ! Property 'message' does not exist on type '{}'.ts(2339) // any mess add
       </div>
     )
   }
@@ -48,6 +44,8 @@ const Example1React = () => {
   const content = results.map((post, index) => {
     if (results.length === index + 1) {
       return <Post ref={lastPostRef} key={post.id} post={post} />
+      // ! Type '{ ref: (postElement: HTMLElement) => void; key: any; post: any; }' is not assignable to type 'IntrinsicAttributes & Props'.
+      // ! Property 'ref' does not exist on type 'IntrinsicAttributes & Props'.
     }
 
     return <Post key={post.id} post={post} />
