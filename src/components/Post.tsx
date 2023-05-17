@@ -1,10 +1,10 @@
-import { FC, forwardRef } from 'react'
+import { forwardRef } from 'react'
 
 interface Props {
   post: any
 }
 
-const Post: FC<Props> = forwardRef<HTMLElement, Props>(({ post }, ref) => {
+const Post = forwardRef<HTMLElement, Props>(({ post }, ref) => {
   const postBody = (
     <>
       <h2>{post.title}</h2>

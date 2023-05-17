@@ -8,7 +8,8 @@ const Example1React = () => {
   const [pageNum, setPageNum] = useState(1)
   const { isLoading, isError, error, results, hasNextPage } = usePosts(pageNum)
   // const lastPostRef = useRef<any>(null)
-  const intObserver = useRef<any>()
+  // const intObserver = useRef<any>()
+  const intObserver = useRef<IntersectionObserver | null>(null)
   const lastPostRef = useCallback(
     (postElement: HTMLElement) => {
       if (isLoading) return
@@ -44,8 +45,6 @@ const Example1React = () => {
   const content = results.map((post, index) => {
     if (results.length === index + 1) {
       return <Post ref={lastPostRef} key={post.id} post={post} />
-      // ! Type '{ ref: (postElement: HTMLElement) => void; key: any; post: any; }' is not assignable to type 'IntrinsicAttributes & Props'.
-      // ! Property 'ref' does not exist on type 'IntrinsicAttributes & Props'.
     }
 
     return <Post key={post.id} post={post} />

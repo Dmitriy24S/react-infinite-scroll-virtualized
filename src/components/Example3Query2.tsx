@@ -10,14 +10,14 @@ const Example3Query2 = () => {
   const {
     status,
     data,
-    error,
-    isFetching,
+    // error,
+    // isFetching,
     isFetchingNextPage,
-    isFetchingPreviousPage,
+    // isFetchingPreviousPage,
     fetchNextPage,
-    fetchPreviousPage,
+    // fetchPreviousPage,
     hasNextPage,
-    hasPreviousPage,
+    // hasPreviousPage,
   } = useInfiniteQuery(
     'posts2',
     async ({ pageParam = 1 }) => {
@@ -34,7 +34,7 @@ const Example3Query2 = () => {
     {
       // getPreviousPageParam: (firstPage) => firstPage.previousId ?? undefined,
       // getNextPageParam: (lastPage) => lastPage.nextId ?? undefined,
-      getNextPageParam: (lastPage, allPages) => {
+      getNextPageParam: (allPages) => {
         const nextPage = allPages.length + 1
         // const nextPage = lastPage.length === LIMIT ? allPages.length + 1 : undefined;
         return nextPage
@@ -65,7 +65,7 @@ const Example3Query2 = () => {
       <div className='container'>
         {data?.pages?.map((page, index) => (
           <Fragment key={index}>
-            {page.map((item: any, index: number) => (
+            {page.map((item: any) => (
               // ref option1: last Post with ref
               <Post2 id={item.id} title={item.title} thumbnailUrl={item.thumbnailUrl} />
             ))}

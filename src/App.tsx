@@ -1,5 +1,5 @@
-import Example1React from './components/Example1React'
-import Example2Query from './components/Example2Query'
+// import Example1React from './components/Example1React'
+// import Example2Query from './components/Example2Query'
 import Example3Query2 from './components/Example3Query2'
 
 function App() {

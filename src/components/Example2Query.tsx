@@ -7,7 +7,7 @@ import Post from './Post'
 
 const Example2Query = () => {
   // const status: "idle" | "error" | "loading" | "success"
-  const { status, error, data, hasNextPage, fetchNextPage, isFetchingNextPage } =
+  const { error, data, hasNextPage, fetchNextPage, isFetchingNextPage } =
     useInfiniteQuery('/posts', async ({ pageParam = 1 }) => getPostsPage(pageParam), {
       getNextPageParam: (lastPage, allPages) => {
         console.log(
@@ -51,8 +51,11 @@ const Example2Query = () => {
     })
 
   // const lastPostRef = useRef<any>(null)
-  const intObserver = useRef<any>(null)
-  const lastPostRef = useCallback(
+  const intObserver = useRef<IntersectionObserver | null>(null)
+
+  // type LastPostRefCallback = (postElement: HTMLElement | null) => void;
+  type LastPostRefCallback = (postElement: HTMLElement) => void
+  const lastPostRef = useCallback<LastPostRefCallback>(
     (postElement: HTMLElement) => {
       if (isFetchingNextPage) return
 
@@ -86,8 +89,6 @@ const Example2Query = () => {
     return page.map((post: any, index: number) => {
       if (page.length === index + 1) {
         return <Post ref={lastPostRef} key={post.id} post={post} />
-        // ! Type '{ ref: (postElement: HTMLElement) => void; key: any; post: any; }' is not assignable to type 'IntrinsicAttributes & Props'.
-        // ! Property 'ref' does not exist on type 'IntrinsicAttributes & Props'.
       }
 
       return <Post key={post.id} post={post} />
