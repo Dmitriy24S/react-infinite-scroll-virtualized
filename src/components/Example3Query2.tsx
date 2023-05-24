@@ -2,6 +2,7 @@ import axios from 'axios'
 import { Fragment, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useInfiniteQuery } from 'react-query'
+import { IPost } from './Post'
 import Post2 from './Post2'
 
 const Example3Query2 = () => {
@@ -21,7 +22,7 @@ const Example3Query2 = () => {
   } = useInfiniteQuery(
     'posts2',
     async ({ pageParam = 1 }) => {
-      const res = await axios.get(
+      const res = await axios.get<IPost[]>(
         `https://jsonplaceholder.typicode.com/albums/${pageParam}/photos`
       )
       console.log('fetching')
@@ -29,14 +30,18 @@ const Example3Query2 = () => {
       // res.data
       // (50) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
       // 0:  {albumId: 1, id: 1, title: 'accusamus beatae ad facilis cum similique qui sunt', url: 'https://via.placeholder.com/600/92c952', thumbnailUrl: 'https://via.placeholder.com/150/92c952'}
+      // return res.data as IPost[]
       return res.data
     },
     {
       // getPreviousPageParam: (firstPage) => firstPage.previousId ?? undefined,
       // getNextPageParam: (lastPage) => lastPage.nextId ?? undefined,
-      getNextPageParam: (allPages) => {
-        const nextPage = allPages.length + 1
+      getNextPageParam: (allPages, lastPage) => {
+        console.log('allPages', allPages)
+        console.log('lastPage', lastPage)
+        // const nextPage = allPages.length + 1
         // const nextPage = lastPage.length === LIMIT ? allPages.length + 1 : undefined;
+        const nextPage = lastPage.length + 1
         return nextPage
       },
     }
@@ -65,9 +70,14 @@ const Example3Query2 = () => {
       <div className='container'>
         {data?.pages?.map((page, index) => (
           <Fragment key={index}>
-            {page.map((item: any) => (
+            {page.map((item: IPost) => (
               // ref option1: last Post with ref
-              <Post2 id={item.id} title={item.title} thumbnailUrl={item.thumbnailUrl} />
+              <Post2
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                thumbnailUrl={item.thumbnailUrl}
+              />
             ))}
           </Fragment>
         ))}

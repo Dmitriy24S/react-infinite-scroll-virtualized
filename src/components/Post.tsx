@@ -1,7 +1,16 @@
 import { forwardRef } from 'react'
 
+export interface IPost {
+  id: number
+  thumbnailUrl: string
+  title: string
+  body?: string
+  url?: string
+  albumId?: number
+}
+
 interface Props {
-  post: any
+  post: IPost
 }
 
 const Post = forwardRef<HTMLElement, Props>(({ post }, ref) => {

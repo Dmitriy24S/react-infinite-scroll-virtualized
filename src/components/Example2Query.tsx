@@ -1,7 +1,7 @@
 import { useCallback, useRef } from 'react'
 import { useInfiniteQuery } from 'react-query'
 import { getPostsPage } from '../api/axios'
-import Post from './Post'
+import Post, { IPost } from './Post'
 
 // React Query
 
@@ -86,7 +86,7 @@ const Example2Query = () => {
 
   // 'data' is possibly 'undefined'.ts(18048)
   const content = data?.pages.map((page) => {
-    return page.map((post: any, index: number) => {
+    return page.map((post: IPost, index: number) => {
       if (page.length === index + 1) {
         return <Post ref={lastPostRef} key={post.id} post={post} />
       }
